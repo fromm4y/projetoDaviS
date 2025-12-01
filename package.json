@@ -1,0 +1,21 @@
+{
+  "name": "projeto-ia-davi",
+  "version": "1.0.0",
+  "description": "Uma API em Node.js e JavaScript que detecta a emoção de uma imagem facial e responde com uma cena do fundo do mar correspondente — limpo, neutro ou poluído — tornando o reconhecimento facial mais visual, educativo e lúdico. Ideal para projetos com crianças. 🌊🐠🧠",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^3.18.0",
+    "@vladmandic/face-api": "^1.7.12",
+    "canvas": "^3.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "multer": "^2.0.2"
+  }
+}

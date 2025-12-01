@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Projeto 'Vozes do Oceano' — conscientização sobre espécies marinhas ameaçadas de extinção: causas, fatos científicos e como ajudar." />
+  <title>Vozes do Oceano — Espécies Marinhas Ameaçadas de Extinção</title>
+<link rel="stylesheet" href="style.css">
+ <!-- Bibliotecas -->
+<script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.8.0/dist/tf.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+</head>
+<body>
+  <header id="siteHeader" class="">
+    <div class="container topbar" role="banner">
+      <div class="brand" aria-hidden="false">
+        <div class="logo" aria-hidden="true">VO</div>
+        <div>
+          <div style="font-weight:800;">Vozes do Oceano</div>
+          <div style="font-size:0.85rem; color:var(--muted); margin-top:2px;">Projeto: Espécies Marinhas Ameaçadas de Extinção</div>
+        </div>
+      </div>
+
+      <nav aria-label="Navegação principal">
+        <a href="#curiosidades">Curiosidades</a>
+        <a href="#fatos">Fatos</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="controls" role="navigation" aria-label="Controles do site">
+        <button id="themeToggle" class="btn ghost" aria-pressed="false" aria-label="Alternar modo claro e escuro">Modo Escuro</button>
+        <button id="btnAbrirChatbotHeader" class="btn" aria-label="Abrir chatbot">Abrir Chatbot</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="container hero" aria-labelledby="heroTitle">
+      <div class="copy">
+        <h1 id="heroTitle">Espécies Marinhas Ameaçadas de Extinção</h1>
+        <p class="lead">“O fundo do mar está falando — você está ouvindo?”</p>
+        <p class="lead" style="font-weight:600; margin-bottom:10px;">Este site trata das espécies marinhas que estão em risco de extinção, explicando as causas dessa ameaça e como podemos ajudar na preservação dos oceanos.</p>
+
+        <div class="heroCard" role="region" aria-label="Ações rápidas">
+          <div class="buttons" style="margin-bottom:10px;">
+            <!-- TODO: adaptar os textos dos botões se necessário -->
+            <button id="abrirIA" class="btn" aria-label="Iniciar reconhecimento facial">Reconhecimento Facial</button>
+            <button id="btnAbrirChatbot" class="btn ghost" aria-label="Abrir chatbot">Abrir Chatbot</button>
+          </div>
+
+          <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+            <div style="flex:1;">
+              <div style="font-size:0.9rem; color:var(--muted);">Equipe:</div>
+              <div style="font-weight:800; margin-top:4px;">Vozes do Oceano — Davi S. Dias, Pedro G. de Souza, Davi A. Macedo, Miguel Ferreira</div>
+            </div>
+            <div style="font-size:0.85rem; color:var(--muted);">Tema: Espécies Marinhas Ameaçadas</div>
+          </div>
+        </div>
+
+        <div class="icon-list" style="max-width:680px;">
+          <div class="icon-item" role="article" tabindex="0" aria-label="Curiosidade 1">
+            <div class="icon">1</div>
+            <div>
+              <strong>Mais de 2.000 espécies</strong>
+              <div style="color:var(--muted);">Mais de 2.000 espécies marinhas estão ameaçadas de extinção no mundo.</div>
+            </div>
+          </div>
+
+          <div class="icon-item" role="article" tabindex="0" aria-label="Curiosidade 2">
+            <div class="icon">2</div>
+            <div>
+              <strong>Tartarugas milenares</strong>
+              <div style="color:var(--muted);">As tartarugas marinhas existem há mais de 100 milhões de anos.</div>
+            </div>
+          </div>
+
+          <div class="icon-item" role="article" tabindex="0" aria-label="Curiosidade 3">
+            <div class="icon">3</div>
+            <div>
+              <strong>Tubarões em declínio</strong>
+              <div style="color:var(--muted);">Cerca de 100 milhões de tubarões são mortos por ano devido à pesca predatória.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="heroCard" aria-hidden="false">
+        <!-- IMAGEM HERO -->
+        <img src="https://mundo-nipo.com/wp-content/uploads/2024/05/Baleia-fin-Fin_Whale_Foto-NAVISyachts_L-1.webp"
+             alt="Baleia em mar aberto — exemplo de espécie marinha ameaçada"
+             role="img">
+        <div style="padding:10px;">
+          <div style="font-weight:800;">Baleia em mar aberto</div>
+          <div style="color:var(--muted); font-size:0.95rem;">Imagem ilustrativa — todas as legendas podem ser atualizadas. <!-- TODO: substituir pela imagem do projeto --> </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURIOSIDADES -->
+    <section id="curiosidades" aria-labelledby="curTitle" style="margin-top:12px;">
+      <div class="container">
+        <h2 id="curTitle">Curiosidades</h2>
+        <p style="color:var(--muted); margin-top:6px;">Fatos rápidos e interessantes sobre o mundo marinho.</p>
+
+        <ul style="list-style:none; padding:0; margin-top:12px; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px;">
+          <li class="card" tabindex="0" aria-label="Curiosidade: Cobertura do mar"><strong>A água do mar cobre 71% da Terra.</strong><div style="color:var(--muted); margin-top:6px;">O oceano domina o planeta e regula clima e ciclos biogeoquímicos.</div></li>
+
+          <li class="card" tabindex="0" aria-label="Curiosidade: Lula colossal"><strong>A lula-colossal tem olhos do tamanho de bolas de futebol.</strong><div style="color:var(--muted); margin-top:6px;">Esses olhos são adaptações a águas profundas e pouca luz.</div></li>
+
+          <li class="card" tabindex="0" aria-label="Curiosidade: Corais e vida marinha"><strong>Os corais abrigam ~25% da vida marinha.</strong><div style="color:var(--muted); margin-top:6px;">Recifes são hotspots de biodiversidade — extremamente vulneráveis ao aquecimento.</div></li>
+
+          <li class="card" tabindex="0" aria-label="Curiosidade: Plástico profundo"><strong>Plástico chega às fossas mais profundas.</strong><div style="color:var(--muted); margin-top:6px;">Microplásticos foram encontrados até nas regiões abissais.</div></li>
+
+          <li class="card" tabindex="0" aria-label="Curiosidade: Golfinho do rio Yangtzé"><strong>Golfinho do rio Yangtzé declarado extinto.</strong><div style="color:var(--muted); margin-top:6px;">Exemplo trágico de impacto humano direto sobre espécies.</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FATOS / CIÊNCIA -->
+    <section id="fatos" aria-labelledby="fatosTitle" style="margin-top:22px;">
+      <div class="container">
+        <h2 id="fatosTitle">Fatos e Ciência</h2>
+        <p style="color:var(--muted); margin-top:6px;">Informações científicas curtas para aprofundar o tema.</p>
+
+        <div class="grid" style="margin-top:12px;">
+          <article class="card" tabindex="0" aria-labelledby="f1">
+            <h3 id="f1">Poluição Marinha</h3>
+            <p>Mais de 8 milhões de toneladas de plástico chegam ao oceano por ano, afetando fauna e habitats.</p>
+          </article>
+
+          <article class="card" tabindex="0" aria-labelledby="f2">
+            <h3 id="f2">Recifes de Corais</h3>
+            <p>Recifes abrigam cerca de 25% das espécies marinhas; o aquecimento causa branqueamento em massa.</p>
+          </article>
+
+          <article class="card" tabindex="0" aria-labelledby="f3">
+            <h3 id="f3">Pesca Predatória</h3>
+            <p>A pesca excessiva e a captura acessória ameaçam populações inteiras, como peixes-serra e tubarões.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" aria-labelledby="galTitle" style="margin-top:22px;">
+      <div class="container">
+        <h2 id="galTitle">Galeria</h2>
+        <p style="color:var(--muted); margin-top:6px;">Seleção de imagens representativas. (6 imagens exibidas; até 12 podem ser armazenadas).</p>
+
+        <div class="gallery" style="margin-top:12px;">
+          <figure tabindex="0">
+            <img src="https://luapousada.com.br/wp-content/uploads/2023/03/Conheca-o-Santuario-Peixe-Boi-Marinho-em-Alagoas-1.jpg" alt="Peixe-boi marinho no santuário">
+            <figcaption style="padding:8px; color:var(--muted); font-size:0.95rem;">Peixe-boi marinho — santuário no Brasil.</figcaption>
+          </figure>
+
+          <figure tabindex="0">
+            <img src="https://cdn0.peritoanimal.com.br/pt/posts/1/3/4/onde_vive_o_boto_cor_de_rosa_25431_orig.jpg" alt="Boto-cor-de-rosa">
+            <figcaption style="padding:8px; color:var(--muted); font-size:0.95rem;">Boto-cor-de-rosa — espécies de água doce vulneráveis.</figcaption>
+          </figure>
+
+          <figure tabindex="0">
+            <img src="https://static.escolakids.uol.com.br/2019/07/2-ariranha.jpg" alt="Ariranha">
+            <figcaption style="padding:8px; color:var(--muted); font-size:0.95rem;">Ariranha — predador de ecossistemas aquáticos.</figcaption>
+          </figure>
+
+          <figure tabindex="0">
+            <img src="https://marsemfim.com.br/wp-content/uploads/2023/11/atum-azul-copiar.jpg" alt="Atum azul">
+            <figcaption style="padding:8px; color:var(--muted); font-size:0.95rem;">Atum-azul — alvo de pesca comercial intensa.</figcaption>
+          </figure>
+
+          <figure tabindex="0">
+            <img src="https://static.todamateria.com.br/upload/tu/ba/tubaraobranco-cke.jpg" alt="Tubarão branco">
+            <figcaption style="padding:8px; color:var(--muted); font-size:0.95rem;">Tubarão branco — importância ecológica vital.</figcaption>
+          </figure>
+
+          <figure tabindex="0">
+            <img src="https://midias.agazeta.com.br/2021/03/09/1920x1080/a-tartaruga-de-couro-dermochelys-coriacea-tambem-e-conhecida-como-tartaruga-gigante-434515.jpg" alt="Tartaruga-de-couro">
+            <figcaption style="padding:8px; color:var(--muted); font-size:0.95rem;">Tartaruga-de-couro — ameaçada por plásticos e pesca.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faqTitle" style="margin-top:22px;">
+      <div class="container">
+        <h2 id="faqTitle">Perguntas Frequentes (FAQ)</h2>
+        <div style="margin-top:10px; display:grid; gap:10px;">
+          <details>
+            <summary>O que significa um animal estar em extinção?</summary>
+            <div>Significa que sua população está tão reduzida que a espécie corre risco de desaparecer da natureza.</div>
+          </details>
+
+          <details>
+            <summary>Quais são os principais animais marinhos em extinção?</summary>
+            <div>Baleia-azul, golfinho-de-Maui, tartarugas marinhas, peixe-serra e tubarões estão entre os mais ameaçados.</div>
+          </details>
+
+          <details>
+            <summary>Qual é a principal causa da extinção dos animais marinhos?</summary>
+            <div>Pesca excessiva, poluição e destruição de habitats são as maiores causas.</div>
+          </details>
+
+          <details>
+            <summary>O aquecimento global afeta os animais marinhos?</summary>
+            <div>Sim. Ele altera a temperatura da água, provoca branqueamento de corais e altera correntes e ecossistemas.</div>
+          </details>
+
+          <details>
+            <summary>O que as pessoas podem fazer para ajudar?</summary>
+            <div>Evitar plásticos descartáveis, consumir peixes de origem sustentável e apoiar projetos de conservação são ações eficazes.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section style="margin-top:22px;">
+      <div class="container">
+        <div class="cta" role="region" aria-label="Chamada para ação">
+          <div>
+            <strong>Quer aprofundar?</strong>
+            <div style="color:var(--muted);">Baixe materiais educativos e compartilhe a campanha "Vozes do Oceano".</div>
+          </div>
+
+          <div style="display:flex; gap:8px; align-items:center;">
+            <a href="#fatos" class="btn ghost" style="text-decoration:none;">Aprenda mais</a>
+            <a href="#galeria" class="btn" style="text-decoration:none;">Ver galeria</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRÉDITOS / FONTES -->
+    <section style="margin-top:22px; margin-bottom:46px;">
+      <div class="container">
+        <h2>Créditos e Fontes</h2>
+        <p style="color:var(--muted); margin-top:6px;">Fontes consultadas (sugestão para checagem): TAMAR, estudos científicos sobre poluição marinha, relatórios de conservação e imagens de domínio público/portais educacionais.</p>
+        <ul style="color:var(--muted); margin-top:10px;">
+          <li>TAMAR — Programa de conservação de tartarugas marinhas.</li>
+          <li>Relatórios de conservação e artigos científicos sobre recifes e pesca.</li>
+          <li>Imagens: mundo-nipo, luapousada, peritoanimal, escolakids, marsemfim, midias.agazeta.</li>
+        </ul>
+        <p style="color:var(--muted); margin-top:12px;"><em>Observação:</em> O ChatGPT pode cometer erros. Verifique dados relevantes antes de publicação.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ASIDE CHAT (painel deslizante) -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Chatbot-IA"
+      agent-id="7e9ea28d-fc2a-4f18-a435-1d31267d9a34"
+      language-code="pt-br">
+    </df-messenger>
+
+  <footer role="contentinfo">
+    <div style="display:flex; gap:12px; align-items:center; font-size:0.95rem;">
+      <div>&copy; <span id="year"></span> Vozes do Oceano</div>
+      <a href="#top" class="btn ghost" style="text-decoration:none;" onclick="scrollToTop(event)">Voltar ao topo</a>
+    </div>
+  </footer>
+<!-- MODAL DE RECONHECIMENTO FACIAL -->
+<div id="cameraModal" class="modal-camera" aria-hidden="true">
+  <div class="modal-camera-content">
+
+    <button id="fecharModal" class="modal-camera-close" title="Fechar">❌</button>
+
+    <h2 class="modal-camera-title">Reconhecimento Facial</h2>
+
+    <div class="modal-video-wrap">
+      <video id="video" autoplay muted playsinline></video>
+    </div>
+
+    <div class="modal-camera-controls">
+      <button id="tirarFoto" class="modal-camera-btn" title="Tirar foto">📸 Tirar Foto</button>
+    </div>
+
+    <p id="modalStatus" class="modal-camera-status">Aguardando...</p>
+
+    <canvas id="fotoCanvas" style="display:none;"></canvas>
+
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
